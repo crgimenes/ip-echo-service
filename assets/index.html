@@ -33,12 +33,32 @@
         margin-bottom: 20px;
         color: #ccc;
       }
+      .fork-me {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        color: #ccc;
+        decoration: none;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="ip-address">{{.IP}}</div>
       <p id="copy">Click on the IP address to copy it to the clipboard.</p>
+    </div>
+    <div class="fork-me">
+      <a href="https://github.com/crgimenes/myip" target="_blank"
+        >Fork me on GitHub</a
+      >
+      |
+      <a
+        href="https://github.com/crgimenes/myip/blob/main/LICENSE"
+        target="_blank"
+        >MIT License</a
+      >
     </div>
   </body>
   <script>
