@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IP</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #1c1c1c 0%, #29323c 100%);
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .container {
+        text-align: center;
+      }
+      .ip-address {
+        cursor: pointer;
+        font-size: 64px;
+        font-weight: 700;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+      }
+      p {
+        cursor: default;
+        font-size: 16px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ip-address">{{.IP}}</div>
+      <p id="copy">Click the IP address to copy it to clipboard</p>
+    </div>
+  </body>
+  <script>
+    document
+      .querySelector(".ip-address")
+      .addEventListener("click", function () {
+        var ip = document.querySelector(".ip-address").innerText;
+        navigator.clipboard.writeText(ip).then(
+          function () {
+            document.querySelector("#copy").innerText = "Copied to clipboard";
+          },
+          function (err) {
+            console.error("Failed to copy: ", err);
+          },
+        );
+      });
+  </script>
+</html>
