@@ -38,8 +38,8 @@ func getParameters(prefix string, r *http.Request) []string {
 func handlerMain(w http.ResponseWriter, r *http.Request) {
 	parameters := getParameters("/", r)
 
-	lang := r.Header.Get("Accept-Language")
-	log.Printf("Accept-Language: %s", lang)
+	//lang := r.Header.Get("Accept-Language")
+	//log.Printf("Accept-Language: %s", lang)
 
 	mode := "html"
 	if len(parameters) > 0 {
@@ -65,9 +65,11 @@ func handlerMain(w http.ResponseWriter, r *http.Request) {
 	case "json":
 		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprintf(w, `{"ip": "%s"}`, ip)
+		log.Printf("IP: %s", ip)
 	case "text":
 		w.Header().Set("Content-Type", "text/plain")
 		fmt.Fprintf(w, "%s", ip)
+		log.Printf("IP: %s", ip)
 	default:
 		w.Header().Set("Content-Type", "text/html")
 		tpl, err := template.ParseFS(assets, "assets/index.html")
@@ -84,6 +86,7 @@ func handlerMain(w http.ResponseWriter, r *http.Request) {
 
 		d := data{IP: ip}
 		tpl.Execute(w, d)
+		log.Printf("IP: %s", ip)
 		return
 	}
 }
